@@ -9,6 +9,12 @@ cask "sangtae" do
 
   app "Sangtae.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Sangtae.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Caches/com.gemini.Sangtae",
     "~/Library/Preferences/com.gemini.Sangtae.plist",
